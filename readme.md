@@ -1,9 +1,9 @@
 # JoyProxy
 > Nice and smart browser extension for managing proxy
 
-JoyProxy - browser extension for managing proxy settings. 
-You can add your own proxies and apply proxy only for custom domains
-Also it can change browser's default useragent
+JoyProxy - chrome extension for managing proxy settings. 
+You can add your own proxy servers and use proxy only for your custom domains
+Also it can change default browser's useragent
 
 ![](pic1.png)
 
@@ -17,20 +17,14 @@ Also it can change browser's default useragent
 4. Pick the "dist" folder
 6. Click on extension icon
 
-## Usage example
-
-Useful if you'd like to for some websites, which are restricted in your country
-
+By default extension use this proxy list 
+[https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list](https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list)
 
 ## Release History
 * 0.0.1
     * Alpha version
 
 ## Meta
-
-Misha Shulga – shulgamichail@gmail.com
-
-Distributed under the XYZ license. See ``LICENSE`` for more information.
 
 [https://github.com/sh0cked/joyproxy](https://github.com/sh0cked/joyproxy/)
 
