@@ -5,7 +5,7 @@ JoyProxy - browser extension for managing proxy settings.
 You can add your own proxies and apply proxy only for custom domains
 Also it can change browser's default useragent
 
-![](picture3.jpg)
+![](pic1.png)
 
 ## Installation
 
