@@ -4,17 +4,20 @@
  * @type {{ON: string, OFF: string}}
  */
 const EXT_ICONS = {
-  ON: '../assets/icons/icon48.png',
-  OFF: '../assets/icons/icon48.png',
+  ON: './assets/icons/icon48-active.png',
+  OFF: './assets/icons/icon48.png',
 };
 
-/**
- * Change browser's extension icon
- * @param ready {Boolean} Main application state
- */
-export const changeExtensionIcon = (ready) => {
-  const iconPath = ready ? EXT_ICONS.ON : EXT_ICONS.OFF;
-  chrome.browserAction.setIcon({
-    path: iconPath,
-  });
+export const changeExtensionIcon = proxyActive => {
+  const iconPath = proxyActive ? EXT_ICONS.ON : EXT_ICONS.OFF;
+  chrome.browserAction.setIcon(
+    {
+      path: iconPath,
+    },
+    () => {
+      if (chrome.runtime.lastError) {
+        console.warn(chrome.runtime.lastError);
+      }
+    }
+  );
 };

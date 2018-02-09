@@ -9,6 +9,7 @@
         Initial proxy list was loaded from <a
         href="https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list">https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list</a>
       </p>
+      <md-button class="md-raised options__reloadBtn" :disabled="proxyLoading" @click="reloadProxyList">Reload proxy list</md-button>
     </div>
   </div>
 </template>
@@ -32,6 +33,21 @@ export default class OptionsTab extends Vue {
       },
     });
   }
+
+  proxyLoading = false;
+  reloadProxyList() {
+    this.proxyLoading = true;
+    chrome.runtime.sendMessage(
+      {
+        action: 'LOAD_PROXIES',
+      },
+      () => {
+        setTimeout(() => {
+          this.proxyLoading = false;
+        }, 500);
+      }
+    );
+  }
 }
 </script>
 
@@ -51,5 +67,9 @@ export default class OptionsTab extends Vue {
   white-space: pre-line;
   color: #96afc0;
   font-weight: 500;
+}
+
+.options__reloadBtn {
+  margin-left: 0 !important;
 }
 </style>

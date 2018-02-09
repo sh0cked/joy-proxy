@@ -13,14 +13,10 @@ import {
   resetUserAgent,
   triggerUsingCustomDomains,
 } from './extension.service';
+import { loadProxyList } from './services/api';
 
-/**
- * Handle messages from content scripts
- */
 export const extMessageListener = (message, sender, sendResponse) => {
   const { action, payload } = message;
-  console.debug('Action/Payload -> ', action, payload);
-
   switch (action) {
     case 'GET_APP_STATE': {
       const appState = getState();
@@ -90,7 +86,6 @@ export const extMessageListener = (message, sender, sendResponse) => {
     case 'TRIGGER_USING_PROXY_ONLY_FOR_SPECIAL_DOMAINS': {
       triggerUsingCustomDomains(payload).then(sendResponse);
       return true;
-      break;
     }
 
     case 'CHANGE_OPTIONS': {
@@ -108,6 +103,11 @@ export const extMessageListener = (message, sender, sendResponse) => {
           type: payload.value,
         },
       });
+      return true;
+    }
+
+    case 'LOAD_PROXIES': {
+      loadProxyList().then(() => sendResponse(getState()));
       return true;
     }
 

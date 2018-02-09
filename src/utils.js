@@ -48,6 +48,9 @@ export const reloadActiveTab = () =>
     chrome.tabs.query({ active: true, currentWindow: true }, arrayOfTabs => {
       const activeTab = arrayOfTabs[0];
       if (activeTab) {
+        if (activeTab.url && activeTab.url.includes('chrome://')) {
+          return;
+        }
         chrome.tabs.reload(activeTab.id);
         resolve();
       } else {

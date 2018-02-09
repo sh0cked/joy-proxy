@@ -192,6 +192,7 @@ function transformProxies(appState) {
   margin-right: 24px !important;
   min-width: 114px !important;
   height: 40px !important;
+  pointer-events: auto !important;
 }
 
 .activateBtn.md-button:not(.inactive) {

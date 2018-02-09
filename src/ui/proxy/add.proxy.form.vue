@@ -4,7 +4,7 @@
     <div class="addProxyForm__inputField">
       <md-field md-inline :class="invalid ? 'md-invalid' : ''">
         <label>ip:port</label>
-        <md-input v-model="editedProxy" v-on:keyup.13="addNewProxy"></md-input>
+        <md-input ref="input" v-model="editedProxy" v-on:keyup.13="addNewProxy"></md-input>
         <span class="md-error">Invalid proxy</span>
       </md-field>
       <md-button class="md-raised" @click="addNewProxy">
@@ -27,7 +27,6 @@ export default class AddProxyForm extends Vue {
   addNewProxy() {
     const proxy = this.parseProxyStr(this.editedProxy);
     if (!isProxyValid(proxy)) {
-      console.log('PROXY IS INVALID', proxy);
       this.invalid = true;
       return;
     }
@@ -63,6 +62,12 @@ export default class AddProxyForm extends Vue {
       acc += `${proxyObject[key]}`;
       return acc;
     }, '');
+  }
+
+  mounted() {
+    Vue.nextTick(() => {
+      this.$refs.input.$el.focus();
+    });
   }
 }
 </script>

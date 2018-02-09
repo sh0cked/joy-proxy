@@ -7,7 +7,11 @@
       <div class="userAgents__statusValue">{{currentUserAgent}}</div>
     </div>
 
-    <md-button @click="applyUserAgent" class="md-raised activateUserAgentBtn">Apply userAgent</md-button>
+
+    <md-button :disabled="!activeUserAgent" @click="applyUserAgent" class="md-raised activateUserAgentBtn">
+      <span>Apply userAgent</span>
+      <md-tooltip v-if="!activeUserAgent" md-direction="bottom">Please select useragent from list</md-tooltip>
+    </md-button>
     <md-button @click="resetUserAgent" class="md-raised md-accent resetUserAgentBtn">Reset</md-button>
 
     <add-useragent-form
@@ -182,7 +186,8 @@ export default class UseragentsTab extends Vue {
 }
 
 .md-list-item-content {
-  padding-bottom: 8px !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
 }
 
 .md-list-item-content > .md-radio:first-child {
@@ -208,11 +213,11 @@ export default class UseragentsTab extends Vue {
   color: white !important;
   height: 40px !important;
   padding: 0 12px !important;
+  pointer-events: auto !important;
 }
 
 .resetUserAgentBtn {
-  /*background-color: #e6710c !important;*/
-  /*color: white !important;*/
+  pointer-events: auto !important;
   height: 40px !important;
   padding: 0 12px !important;
 }

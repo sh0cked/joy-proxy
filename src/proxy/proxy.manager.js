@@ -1,12 +1,8 @@
 import { isProxyValid, showNofitication } from '../utils';
-/**
- * Apply passed proxy in Chrome config
- * @param proxy
- * @param options
- */
 import { getCountryByIp } from '../services/api';
 import { updateState, getState } from '../state';
 import { generatePacScript } from './pac.proxy';
+import { changeExtensionIcon } from '../ui';
 
 export const applyProxy = proxy =>
   new Promise((resolve, reject) => {
@@ -84,7 +80,7 @@ export const readCurrentProxyConfig = () =>
     });
   });
 
-export const initialHandleProxyConfig = async config => {
+export const initialHandleProxyConfig = async () => {
   const proxyConfig = await readCurrentProxyConfig();
   const { levelOfControl, value = {} } = proxyConfig;
   if (levelOfControl !== 'controlled_by_this_extension') {
@@ -92,6 +88,14 @@ export const initialHandleProxyConfig = async config => {
     console.warn(
       "Extension doesn't have control over proxy settings in browser!"
     );
+    return;
+  }
+  if (value.mode === 'system') {
+    await updateState({
+      currentProxy: null,
+      enabled: false,
+    });
+    changeExtensionIcon(false);
     return;
   }
   if (value.mode === 'pac_script') {
@@ -113,6 +117,7 @@ export const initialHandleProxyConfig = async config => {
           },
           enabled: true,
         });
+        changeExtensionIcon(true);
       }
     }
   }
@@ -130,13 +135,14 @@ export const initialHandleProxyConfig = async config => {
     },
     enabled: true,
   });
+  changeExtensionIcon(true);
 };
 /**
  * Reset proxy when Chrome emits proxy error
  */
 export const setProxyErrorHandler = () => {
   chrome.proxy.onProxyError.addListener(details => {
-    console.warn('Error with proxy  , ', details.error);
+    console.log('Error with proxy  , ', details);
     showNofitication({ title: 'Proxy error', message: details.error });
     updateState({ proxyError: details.error }).then(state =>
       chrome.runtime.sendMessage({

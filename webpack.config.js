@@ -8,11 +8,6 @@ const { argv } = require('yargs');
 
 const isProduction = process.env.NODE_ENV === 'production' || argv.production;
 
-/**
- * Get plugins for build
- * @param isProd {Boolean} Is production build
- * @returns {[*,*]}
- */
 function getPlugins(isProd) {
   const plugins = [
     new CleanWebpackPlugin('dist'),
@@ -21,7 +16,7 @@ function getPlugins(isProd) {
         { from: './src', ignore: ['*.js', '.*', '*.vue'] },
         { from: './src/assets', to: 'assets' },
       ],
-      {},
+      {}
     ),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(isProd),
@@ -42,7 +37,7 @@ function getPlugins(isProd) {
         context: __dirname,
         name: '[name]_[hash]',
         path: path.join(__dirname, 'manifest.json'),
-      }),
+      })
     );
   }
   return plugins;
@@ -70,15 +65,9 @@ const config = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            // {{#sass}}
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
             scss: 'vue-style-loader!css-loader!sass-loader',
             sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-            // {{/sass}}
           },
-          // other vue-loader options go here
         },
       },
       {

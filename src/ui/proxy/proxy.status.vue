@@ -6,6 +6,7 @@
                @click="activateProxy()">
       <span v-if="!isProxyActive">Start</span>
       <span v-if="isProxyActive">Stop</span>
+      <md-tooltip v-if="!proxy" md-direction="bottom">Please select proxy server from table</md-tooltip>
     </md-button>
     <div class="status" :class="isProxyActive ? '' : 'off'">
       <div class="status__label">Status</div>

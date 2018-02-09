@@ -34,7 +34,6 @@ export const loadProxyList = () =>
             }
           })
           .filter(item => Boolean(item));
-
         updateState({
           proxyList: list.map(item => ({
             ip: item.host,

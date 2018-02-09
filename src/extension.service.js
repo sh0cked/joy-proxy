@@ -10,6 +10,7 @@ import {
 } from './network.handler';
 import { updateState, getState } from './state';
 import { reloadActiveTab } from './utils';
+import { changeExtensionIcon } from './ui';
 
 export const addProxy = async (proxy) => {
   const { proxyList } = getState();
@@ -34,7 +35,9 @@ export const applyProxy = async (proxy) => {
     }
   } catch (err) {
     console.log(err);
+    return Promise.reject(err);
   }
+  changeExtensionIcon(true);
   return await updateState({
     enabled: true,
     currentProxy: proxy,
@@ -45,6 +48,7 @@ export const applyProxy = async (proxy) => {
 // Reset chrome proxy
 export const resetProxy = async () => {
   await chromeResetProxy();
+  changeExtensionIcon(false);
   return await updateState({
     enabled: false,
     proxyError: null,

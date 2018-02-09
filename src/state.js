@@ -3,7 +3,7 @@ import { userAgents } from './assets/useragents';
 
 let appState = {
   enabled: false,
-  useOnlyForSpecialDomains: true,
+  useOnlyForSpecialDomains: false,
   proxyList: [],
   currentProxy: null,
   config: {
@@ -41,5 +41,5 @@ export const updateState = newState => {
 export const restoreExtState = async () => {
   const { state: restoredState } = await getValue('state');
   console.log('Restored state -> ', appState);
-  await updateState(restoredState);
+  await updateState({ ...restoredState, proxyError: null });
 };
