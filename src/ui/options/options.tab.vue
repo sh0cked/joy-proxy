@@ -48,6 +48,17 @@ export default class OptionsTab extends Vue {
       }
     );
   }
+
+  mounted() {
+    chrome.runtime.sendMessage(
+      {
+        action: 'GET_APP_STATE',
+      },
+      ({ options }) => {
+        this.reloadActiveTab = options.reloadActiveTabOnApplyProxy;
+      }
+    );
+  }
 }
 </script>
 

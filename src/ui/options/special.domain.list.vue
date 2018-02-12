@@ -64,11 +64,10 @@ export default class AddSpecialDomainForm extends Vue {
 
   mounted() {
     chrome.runtime.sendMessage({ action: 'GET_APP_STATE' }, state => {
-      this.useProxyOnlyForSpecialDomains = state.useOnlyForSpecialDomains;
+      this.useProxyOnlyForSpecialDomains = state.options.reloadActiveTabOnApplyProxy;
       this.mapCustomDomains(state);
     });
     setTimeout(() => {
-      // FIXME
       this.ready = true;
     }, 500);
   }

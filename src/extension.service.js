@@ -129,14 +129,16 @@ export const resetUserAgent = () => {
 
 export const triggerUsingCustomDomains = async (value) => {
   const state = getState();
-  const wasEnabled = state.enabled;
+  const wasEnabled = getState().enabled;
   await resetProxy();
   await updateState({
-    useOnlyForSpecialDomains: Boolean(value),
+    options: {
+      ...state.options,
+      reloadActiveTabOnApplyProxy: Boolean(value)
+    }
   });
-
   if (getState().currentProxy && wasEnabled) {
     return applyProxy(state.currentProxy);
   }
-  return state;
+  return getState();
 };

@@ -1,6 +1,7 @@
 # JoyProxy
 > Nice and smart browser extension for managing proxy
 
+[https://chrome.google.com/webstore/detail/joyproxy/cfdjgedemlfeincnkcmhegbgkicofekg/reviews?hl=en-US](https://chrome.google.com/webstore/detail/joyproxy/cfdjgedemlfeincnkcmhegbgkicofekg/reviews?hl=en-US)
 JoyProxy - chrome extension for managing proxy settings. 
 You can add your own proxy servers and use proxy only for your custom domains
 Also it can change default browser's useragent
@@ -24,13 +25,10 @@ By default extension use this proxy list
 * 0.0.1
     * Alpha version
 
-## Meta
-
-[https://github.com/sh0cked/joyproxy](https://github.com/sh0cked/joyproxy/)
 
 ## Contributing
 
-1. Fork it (<https://github.com/sh0cked/joyproxy/fork>)
+1. Fork it (<https://github.com/sh0cked/joy-proxy/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)

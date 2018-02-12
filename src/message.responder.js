@@ -96,13 +96,14 @@ export const extMessageListener = (message, sender, sendResponse) => {
       if (!type) {
         return;
       }
+
       const state = getState();
       updateState({
         options: {
           ...state.options,
-          type: payload.value,
+          [type]: payload.value,
         },
-      });
+      }).then(console.warn);
       return true;
     }
 

@@ -9,9 +9,9 @@ import { restoreExtState } from './state';
 import { showNofitication } from './utils';
 
 async function start() {
+  await restoreExtState();
   await resetProxy();
   await initialHandleProxyConfig();
-  await restoreExtState();
   initMessageResponder();
   setProxyErrorHandler();
   try {

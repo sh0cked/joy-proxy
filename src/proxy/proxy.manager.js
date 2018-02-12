@@ -10,7 +10,7 @@ export const applyProxy = proxy =>
     if (
       state.specialDomains &&
       state.specialDomains.length &&
-      state.useOnlyForSpecialDomains
+      state.options.reloadActiveTabOnApplyProxy
     ) {
       const config = {
         mode: 'pac_script',
@@ -58,7 +58,6 @@ export const applyFixedProxy = (proxy, options = {}) =>
  */
 export const resetProxy = () =>
   new Promise((resolve, reject) => {
-    console.log(': resetProxy');
     chrome.proxy.settings.set(
       { value: { mode: 'system' }, scope: 'regular' },
       () => {
