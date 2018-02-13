@@ -1,5 +1,4 @@
 /* global FormData */
-// TODO Make optional checking proxy country
 import axios from 'axios';
 import { updateState } from '../state';
 

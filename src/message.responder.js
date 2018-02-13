@@ -103,7 +103,7 @@ export const extMessageListener = (message, sender, sendResponse) => {
           ...state.options,
           [type]: payload.value,
         },
-      }).then(console.warn);
+      });
       return true;
     }
 

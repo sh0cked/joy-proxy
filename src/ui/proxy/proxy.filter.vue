@@ -54,7 +54,7 @@ export default class ProxyFilter extends Vue {
   }
 
   mounted() {
-    // TODO Save filter params in state
+    // TODO Save filter params in state?
     // const { type, country } = this.criteria;
     // if (type) {
     //   this.type = type;

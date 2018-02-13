@@ -1,4 +1,3 @@
-// TODO Change extension icon when proxy is active\inactive
 /**
  * Map that contains path to ext icons
  * @type {{ON: string, OFF: string}}

@@ -84,7 +84,6 @@ export const loadFonts = () => {
   });
 };
 
-// TODO Create param for http or https
 export const checkForInternetConnection = () =>
   axios
     .head(`https://google.com?random=${Math.random()}`)

@@ -1,7 +1,7 @@
 # JoyProxy
 > Nice and smart browser extension for managing proxy
 
-[https://chrome.google.com/webstore/detail/joyproxy/cfdjgedemlfeincnkcmhegbgkicofekg/reviews?hl=en-US](https://chrome.google.com/webstore/detail/joyproxy/cfdjgedemlfeincnkcmhegbgkicofekg/reviews?hl=en-US)
+[https://chrome.google.com/webstore/detail/joyproxy/cfdjgedemlfeincnkcmhegbgkicofekg?hl=en-US](https://chrome.google.com/webstore/detail/joyproxy/cfdjgedemlfeincnkcmhegbgkicofekg/?hl=en-US)
 JoyProxy - chrome extension for managing proxy settings. 
 You can add your own proxy servers and use proxy only for your custom domains
 Also it can change default browser's useragent
